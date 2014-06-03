@@ -1,0 +1,7 @@
+{
+    "author" : "Lars Winter",
+    "webserver" : {
+        "serviceName" : "rcswitch-rpi-server",
+        "port" : 3000
+    }
+}
