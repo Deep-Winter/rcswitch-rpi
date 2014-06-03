@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LWRCSwitchServerDelegate.h"
 
-@interface LWViewController : UIViewController
+@interface LWViewController : UITableViewController <LWRCSwitchServerDelegate>
 
 @end
