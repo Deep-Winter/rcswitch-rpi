@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>40362680-07AC-48ED-B6CD-68D656EA9E24</string>
+	<key>IDESourceControlProjectName</key>
+	<string>RCSwitch-IOS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>109F4C3C-566D-4167-A6CB-983997803320</key>
+		<string>https://github.com/LHWinter/rcswitch-rpi.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>clients/ios/RCSwitch-IOS/RCSwitch-IOS.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>109F4C3C-566D-4167-A6CB-983997803320</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/LHWinter/rcswitch-rpi.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>109F4C3C-566D-4167-A6CB-983997803320</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>109F4C3C-566D-4167-A6CB-983997803320</string>
+			<key>IDESourceControlWCCName</key>
+			<string>rcswitch-rpi</string>
+		</dict>
+	</array>
+</dict>
+</plist>
