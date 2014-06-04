@@ -44,6 +44,8 @@
 		46F96C9A193E6798006BEA77 /* LWRCSwitchServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F96C99193E6798006BEA77 /* LWRCSwitchServer.m */; };
 		46F96CA5193E7765006BEA77 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F96C9C193E6957006BEA77 /* libicucore.dylib */; };
 		46F96CA8193E7854006BEA77 /* LWRCSwitchServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F96CA7193E7854006BEA77 /* LWRCSwitchServerConnection.m */; };
+		46F96CAB193F0853006BEA77 /* LWSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F96CAA193F0853006BEA77 /* LWSwitchTableViewCell.m */; };
+		46F96CAF193F08B0006BEA77 /* LWSwitchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F96CAE193F08B0006BEA77 /* LWSwitchModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,10 @@
 		46F96CA0193E7681006BEA77 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		46F96CA2193E769C006BEA77 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		46F96CA7193E7854006BEA77 /* LWRCSwitchServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWRCSwitchServerConnection.m; sourceTree = "<group>"; };
+		46F96CA9193F0853006BEA77 /* LWSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSwitchTableViewCell.h; sourceTree = "<group>"; };
+		46F96CAA193F0853006BEA77 /* LWSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSwitchTableViewCell.m; sourceTree = "<group>"; };
+		46F96CAD193F08B0006BEA77 /* LWSwitchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSwitchModel.h; sourceTree = "<group>"; };
+		46F96CAE193F08B0006BEA77 /* LWSwitchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSwitchModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +202,8 @@
 				46F96C32193E5853006BEA77 /* Main_iPad.storyboard */,
 				46F96C35193E5853006BEA77 /* LWViewController.h */,
 				46F96C36193E5853006BEA77 /* LWViewController.m */,
+				46F96CA9193F0853006BEA77 /* LWSwitchTableViewCell.h */,
+				46F96CAA193F0853006BEA77 /* LWSwitchTableViewCell.m */,
 				46F96C38193E5853006BEA77 /* Images.xcassets */,
 				46F96C24193E5853006BEA77 /* Supporting Files */,
 			);
@@ -234,6 +242,7 @@
 		46F96C55193E5924006BEA77 /* Server Connection */ = {
 			isa = PBXGroup;
 			children = (
+				46F96CAC193F088D006BEA77 /* Models */,
 				46F96C5C193E675A006BEA77 /* socketio */,
 				46F96C56193E5943006BEA77 /* Bonjour Browsing */,
 				46F96C98193E6798006BEA77 /* LWRCSwitchServer.h */,
@@ -313,6 +322,15 @@
 				46F96C85193E675A006BEA77 /* SRWebSocket.m */,
 			);
 			path = SocketRocket;
+			sourceTree = "<group>";
+		};
+		46F96CAC193F088D006BEA77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				46F96CAD193F08B0006BEA77 /* LWSwitchModel.h */,
+				46F96CAE193F08B0006BEA77 /* LWSwitchModel.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,12 +447,14 @@
 				46F96C9A193E6798006BEA77 /* LWRCSwitchServer.m in Sources */,
 				46F96C86193E675A006BEA77 /* SBJsonParser.m in Sources */,
 				46F96C90193E675A006BEA77 /* SocketIO.m in Sources */,
+				46F96CAB193F0853006BEA77 /* LWSwitchTableViewCell.m in Sources */,
 				46F96C88193E675A006BEA77 /* SBJsonStreamParserAccumulator.m in Sources */,
 				46F96C8A193E675A006BEA77 /* SBJsonStreamParserState.m in Sources */,
 				46F96C96193E675A006BEA77 /* NSData+SRB64Additions.m in Sources */,
 				46F96C97193E675A006BEA77 /* SRWebSocket.m in Sources */,
 				46F96C37193E5853006BEA77 /* LWViewController.m in Sources */,
 				46F96C8C193E675A006BEA77 /* SBJsonStreamWriter.m in Sources */,
+				46F96CAF193F08B0006BEA77 /* LWSwitchModel.m in Sources */,
 				46F96C89193E675A006BEA77 /* SBJsonStreamParserAdapter.m in Sources */,
 				46F96C93193E675A006BEA77 /* SocketIOTransportWebsocket.m in Sources */,
 				46F96C91193E675A006BEA77 /* SocketIOJSONSerialization.m in Sources */,

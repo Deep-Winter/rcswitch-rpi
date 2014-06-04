@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "LWRCSwitchServer.h"
 
-@interface LWViewController : UITableViewController <LWRCSwitchServerDelegate>
+@interface LWViewController : UITableViewController <LWRCSwitchServerDelegate, UITableViewDataSource>
 
 @end

@@ -13,21 +13,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="oFe-jh-RgX">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SwitchTableViewCell" id="oFe-jh-RgX" customClass="LWSwitchTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oFe-jh-RgX" id="geD-FD-NH8">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bln-KJ-A3R">
+                                            <rect key="frame" x="248" y="6" width="51" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="onSwitchValueChanged:" destination="oFe-jh-RgX" eventType="valueChanged" id="1Fn-Vy-Rni"/>
+                                            </connections>
+                                        </switch>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZO-KM-XqZ">
+                                            <rect key="frame" x="21" y="0.0" width="220" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="labelTitel" destination="tZO-KM-XqZ" id="iBR-8w-Yal"/>
+                                    <outlet property="switchState" destination="bln-KJ-A3R" id="YPP-Cv-gqV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="kq1-A6-11W" id="xVd-Ov-cDP"/>
+                            <outlet property="dataSource" destination="kq1-A6-11W" id="QlS-Q1-CWM"/>
                             <outlet property="delegate" destination="kq1-A6-11W" id="ZzR-FF-Tmy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="RCSwitch-IOS" id="Xfe-5D-ym7"/>
+                    <navigationItem key="navigationItem" title="RCSwitch-IOS" id="CDt-f3-0qQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4G1-wg-Agy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
