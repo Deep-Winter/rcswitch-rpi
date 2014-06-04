@@ -7,13 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LWServiceBrowserDelegate.h"
+
+@protocol LWServiceBrowserDelegate <NSObject>
+
+- (void)serviceBrowser:(id)browser
+browsingStateChangedTo:(BOOL)isSearching;
+
+- (void)serviceBrowser:(id)browser
+         foundHostname:(id)hostname
+               andPort:(int)port
+            forService:(id)serviceId;
+
+- (void)serviceBrowser:(id)browser
+           lostService:(id)serviceId;
+@end
+
 
 @interface LWServiceBrowser : NSObject <NSNetServiceBrowserDelegate,
                                         NSNetServiceDelegate>
-
 @property (assign) id <LWServiceBrowserDelegate> delegate;
-
 @property BOOL searching;
 
 /**

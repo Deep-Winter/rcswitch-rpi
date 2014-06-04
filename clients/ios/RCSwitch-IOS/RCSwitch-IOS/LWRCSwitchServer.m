@@ -11,13 +11,15 @@
 #import "SocketIOPacket.h"
 
 @interface LWRCSwitchServer ()
-
 @property LWServiceBrowser* serviceBrowser;
 @property SocketIO* socket;
-
 @end
 
 @implementation LWRCSwitchServer
+
+/***********************************************************/
+#pragma mark Public API
+/***********************************************************/
 
 + (id)createAndConnectWithDelegate:(id<LWRCSwitchServerDelegate>)theDelegate {
     LWRCSwitchServer* server = [[LWRCSwitchServer alloc] initWithDelegate:theDelegate];
@@ -40,6 +42,17 @@
     [self.serviceBrowser startSearchingServiceWithName:@"rcswitch-rpi-server"];
     
 }
+
+- (void)sendMessage:(NSString *)message withData:(id)data {
+    if (!self.state == LWRCSwitchServerState_Connected) return;
+    if (!self.socket.isConnected) return;
+    
+    [self.socket sendEvent:message withData:data];
+}
+
+/***********************************************************/
+#pragma mark LWServiceBrowserDelegate
+/***********************************************************/
 
 - (void)serviceBrowser:(id)browser browsingStateChangedTo:(BOOL)isSearching {
     self.state = LWRCSwitchServerState_Browsing;
@@ -66,6 +79,10 @@
     [self onStateChanged];
 }
 
+/***********************************************************/
+#pragma mark SocketIODelegate
+/***********************************************************/
+
 - (void)socketIODidConnect:(SocketIO *)socket {
     NSLog(@"Connected to server");
     
@@ -80,23 +97,20 @@
     NSLog(@"onError() %@", error);
 }
 
+- (void)socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
+    if (!self.delegate) return;
+    [self.delegate RCSwitchServer:self didReceivedMessage:packet.name widthData:packet.dataAsJSON[@"args"][0]];
+}
+
+/***********************************************************/
+#pragma mark Private API
+/***********************************************************/
+
 -(void)onStateChanged {
     NSLog(@"LWRCSwitchServer=>state: %d", self.state);
     if (!self.delegate) return;
     
     [self.delegate RCSwitchServer:self stateChanged:self.state];
-}
-
-- (void)sendMessage:(NSString *)message withData:(id)data {
-    if (!self.state == LWRCSwitchServerState_Connected) return;
-    if (!self.socket.isConnected) return;
-    
-    [self.socket sendEvent:message withData:data];
-}
-
-- (void)socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
-    if (!self.delegate) return;
-    [self.delegate RCSwitchServer:self didReceivedMessage:packet.name widthData:packet.dataAsJSON[@"args"][0]];
 }
 
 @end

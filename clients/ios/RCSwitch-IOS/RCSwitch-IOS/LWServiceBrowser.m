@@ -9,13 +9,9 @@
 #import "LWServiceBrowser.h"
 
 @interface LWServiceBrowser ()
-
-    @property NSNetServiceBrowser* serviceBrowser;
-
-    @property NSString* serviceName;
-
-    @property NSNetService* service;
-
+@property NSNetServiceBrowser* serviceBrowser;
+@property NSString* serviceName;
+@property NSNetService* service;
 @end
 
 @implementation LWServiceBrowser

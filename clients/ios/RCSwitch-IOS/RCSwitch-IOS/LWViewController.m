@@ -7,13 +7,11 @@
 //
 
 #import "LWViewController.h"
-#import "LWRCSwitchServer.h"
+
 
 @interface LWViewController ()
-
 @property LWRCSwitchServer *server;
 @property UIAlertView* alertView;
-
 @end
 
 @implementation LWViewController
