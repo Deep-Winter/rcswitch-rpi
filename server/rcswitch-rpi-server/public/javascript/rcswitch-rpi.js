@@ -52,13 +52,13 @@ var RCSwitchList = Backbone.View.extend({
    el:'.page',
    render: function() {
        var that = this;
-       var rcswitches = new RCSwitches();
-       rcswitches.fetch({
-           success: function(rcswitches) {
-               var template = _.template($('#rcswitch-list-template').html(), {rcswitches: rcswitches.models});
+       var rcSwitches = new RCSwitches();
+       rcSwitches.fetch({
+           success: function(rcSwitches) {
+               var template = _.template($('#rcswitch-list-template').html(), {rcSwitches: rcSwitches.models});
                that.$el.html(template);
            },
-           error: function(rcswitches, response) {
+           error: function(rcSwitches, response) {
              var template = _.template($('#rcswitch-error-template').html(), { message: response.responseText});
                that.$el.html(template);
            }
@@ -73,10 +73,10 @@ var Router = Backbone.Router.extend({
     }
 });
 
-var rcswitchList = new RCSwitchList();
+var rcSwitchList = new RCSwitchList();
 var router = new Router();
 router.on('route:index', function() {
-    rcswitchList.render();
+    rcSwitchList.render();
 });
 
 Backbone.history.start();
