@@ -12,6 +12,8 @@
 @property NSString* identifier;
 @property NSString* name;
 @property NSString* description;
+@property NSString* systemCode;
+@property NSString* deviceCode;
 @property BOOL isOn;
 
 + (LWSwitchModel* )createModelWithData:(NSDictionary*)serverData;

@@ -4,18 +4,68 @@
     </div>
 </script>
 
+<script type="text/template" id="edit-switch-template">
+    <form role="form" class="edit-switch-form">
+        <div class="form-group">
+            <label for="text_name">Name</label>
+            <input type="text" class="form-control" name="name" id="text_name" placeholder="Name" value="<%= switchModel ? switchModel.get('name') : ''  %>">
+        </div>
+        <div class="form-group">
+            <label for="text_description">Description</label>
+            <textarea class="form-control" name="description" id="text_description" rows="3"><%= switchModel ? switchModel.get('description') : ''  %></textarea>
+        </div>
+        <div class="form-group">
+            <label for="text_system_code">System-Code</label>
+            <input type="text" name="systemCode" maxlength="5" class="form-control" id="text_system_code" placeholder="00000" value="<%= switchModel ? switchModel.get('systemCode') : ''  %>">
+        </div>
+        <div class="form-group">
+            <label for="text_device_code">Device-Code</label>
+            <select class="form-control" name="deviceCode" id="text_device_code">
+                <option <%= switchModel && switchModel.get('deviceCode') == '1' ? 'selected' : ''  %> value="1">1</option>
+                <option <%= switchModel && switchModel.get('deviceCode') == '2' ? 'selected' : ''  %> value="2">2</option>
+                <option <%= switchModel && switchModel.get('deviceCode') == '3' ? 'selected' : ''  %> value="3">3</option>
+                <option <%= switchModel && switchModel.get('deviceCode') == '4' ? 'selected' : ''  %> value="4">4</option>
+                <option <%= switchModel && switchModel.get('deviceCode') == '5' ? 'selected' : ''  %> value="5">5</option>
+            </select>
+        </div>
+        <input type="hidden" name="status" value="<%= switchModel ? switchModel.get('status') : false %>" />
+        <button type="submit" class="btn btn-default"><%= switchModel ? 'Update' : 'Create' %></button>
+        <% if (switchModel) { %>
+            <input type="hidden" name="_id" value="<%= switchModel.id %>" />
+            <button data-rcswitch-id="<%= switchModel.id %>" class="btn btn-danger delete">Delete</button>
+        <% }; %>
+
+    </form>
+</script>
+
 <script type="text/template" id="rcswitch-list-template">
+    <a href="#/new" class="btn btn-default"> <span class="glyphicon glyphicon-plus"></span> New</a>
+    <hr />
     <table class="table">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Code</th>
                 <th>Status</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-
+            <%_.each(rcSwitches, function(rcSwitch) { %>
+                <tr>
+                    <td><%= rcSwitch.get('name') %></td>
+                    <td><%= rcSwitch.get('description') %></td>
+                    <td><%= rcSwitch.get('systemCode') %> <%= rcSwitch.get('deviceCode') %></td>
+                    <td>
+                        <button data-switch-id="<%= rcSwitch.id %>"
+                                data-init-state="<%= rcSwitch.get('status') %>"
+                                type="button" class="btn switch-btn"></button>
+                    </td>
+                    <td><a href="#/rcswitch/<%= rcSwitch.id %>" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                </tr>
+            <% }); %>
         </tbody>
     </table>
 </script>
+

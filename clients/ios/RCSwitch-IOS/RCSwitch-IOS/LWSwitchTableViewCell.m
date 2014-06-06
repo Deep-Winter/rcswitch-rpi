@@ -11,6 +11,8 @@
 @implementation LWSwitchTableViewCell
 @synthesize model;
 
+BOOL _processModelChanges = YES;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -40,6 +42,7 @@
     model = newModel;
     if (!model) return;
     [self fillDataFromModel];
+    [model addObserver:self forKeyPath:@"isOn" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)fillDataFromModel {
@@ -55,8 +58,20 @@
 //-(void) updateModel:(LWSwitchModel)
 
 - (IBAction)onSwitchValueChanged:(UISwitch *)sender {
-    NSLog(@"CHECKED %d", sender.on);
-    self.model.isOn = sender.on;
+    if (_processModelChanges)
+        self.model.isOn = sender.on;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"isOn"]) {
+        LWSwitchModel* model = object;
+        _processModelChanges = NO;
+        [self.switchState setOn:model.isOn animated:YES];
+        _processModelChanges = YES;
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 @end

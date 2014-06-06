@@ -1,16 +1,16 @@
 {
-    "name": "rcswitch-rpi-server",
-    "version": "0.0.1",
-    "private": true,
-    "scripts": {
-        "start": "node app.js"
-    },
-    "dependencies": {
-        "express": "3.x",
-        "jade": "*",
-        "nedb": "*",
-        "mdns": "https://github.com/Wizcorp/node_mdns/tarball/master",
-        "socket.io": "*",
-        "configure": "*"
-    }
+  "name": "rcswitch-rpi-server",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "configure": "*",
+    "express": "3.x",
+    "jade": "*",
+    "mdns": "https://github.com/Wizcorp/node_mdns/tarball/master",
+    "nedb": "^0.10.5",
+    "socket.io": "*"
+  }
 }

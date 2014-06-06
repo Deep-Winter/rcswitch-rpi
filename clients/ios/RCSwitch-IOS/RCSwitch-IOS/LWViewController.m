@@ -18,6 +18,8 @@
 
 @implementation LWViewController
 
+BOOL _processLocalModelChanges = YES;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -52,20 +54,16 @@
 }
 
 - (void)RCSwitchServer:(id)theServer stateChanged:(LWRCSwitchServerState)theState {
-    NSLog(@"STATE CHANGED TO %d", theState);
-    
     if (theState == LWRCSwitchServerState_Connected) {
         [self.alertView dismissWithClickedButtonIndex:0 animated:YES];
         [self.server sendMessage:@"switches_get" withData:@""];
     } else {
         [self.alertView setTitle:@"Connection lost\nTry to reconnect..."];
-        //self.alertView updateConstraint
         [self.alertView show];
     }
 }
 
 - (void)RCSwitchServer:(id)theServer didReceivedMessage:(NSString *)message widthData:(id)data {
-    NSLog(@"Received: %@", message);
     if ([message isEqualToString:@"switches_response"]) {
         [self.models removeAllObjects];
         NSDictionary* modelData;
@@ -77,13 +75,28 @@
     
         [self.tableView reloadData];
     }
+    
+    if ([message isEqualToString:@"switch_changed"]) {
+        LWSwitchModel* newModel = [LWSwitchModel createModelWithData:data];
+        
+        for(LWSwitchModel* model in self.models) {
+            if ([model.identifier isEqualToString:newModel.identifier]) {
+                _processLocalModelChanges = NO;
+                model.isOn = newModel.isOn;
+                _processLocalModelChanges = YES;
+            }
+        }
+    }
+
 }
 
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"isOn"]) {
-        LWSwitchModel* model = object;
-        [self.server sendMessage:@"switch_changed" withData:[model toDictionary]];
+        if (_processLocalModelChanges ) {
+            LWSwitchModel* model = object;
+            [self.server sendMessage:@"switch_changed" withData:[model toDictionary]];
+        }
     }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];

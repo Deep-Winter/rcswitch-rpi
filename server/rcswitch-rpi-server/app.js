@@ -10,6 +10,10 @@ var mdns = require('mdns2');
 var path = require('path');
 var routes = require('./routes');
 var config = require('configure');
+var Datastore = require('nedb'), db = {};
+db.switches = new Datastore({ filename: 'data/switches.db', autoload: true});
+
+routes.setDB(db);
 
 // all environments
 app.set('port', process.env.PORT || config.webserver.port || 3000);
@@ -29,6 +33,11 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index); // Route to ember.js client view
+app.get('/rcswitches', routes.rcswitches);
+app.get('/rcswitches/:id', routes.getSwitch);
+app.post('/rcswitches', routes.insertSwitch);
+app.put('/rcswitches/:id', routes.updateSwitch);
+app.delete('/rcswitches/:id', routes.deleteSwitch);
 
 // register all socket.io event handler
 var eventHandlers = require('./events').events;
@@ -37,7 +46,7 @@ io.sockets.on('connection', function (socket) {
     for(eventname in eventHandlers) {
         (function(currentevent) {
             socket.on(currentevent, function(data) {
-                eventHandlers[currentevent](io, socket, data);
+                eventHandlers[currentevent](io, socket, data, db);
             })
         })(eventname);
     }

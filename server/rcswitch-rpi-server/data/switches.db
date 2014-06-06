@@ -1,0 +1,5 @@
+{"name":"test1","description":"Dies ist ein test","systemCode":"11111","deviceCode":"4","status":"false","_id":"1"}
+{"name":"Testlampe","status":false,"_id":"2","systemCode":"00001","description":"djflsdjflkdsjflkösdjfsd Dies ist noch ein test","deviceCode":"5"}
+{"name":"Schlafzimmerlampe","status":false,"_id":"DVGLPVRUE27RS4ij","systemCode":"00001","description":"","deviceCode":"1"}
+{"name":"sdfsdfsd","status":false,"_id":"gcaNFeJiDYjwWoWS","systemCode":"00110","description":"sdfds","deviceCode":"1"}
+{"name":"Klavierlampe","description":"","systemCode":"00001","deviceCode":"2","status":true,"_id":"pDy1kix78j7wtEyz"}
