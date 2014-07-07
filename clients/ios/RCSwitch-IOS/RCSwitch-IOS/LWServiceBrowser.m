@@ -57,7 +57,11 @@
     
     self.serviceName = serviceName;
     
-    [_serviceBrowser searchForServicesOfType:@"_http._tcp" inDomain:@""];
+    
+    [self.delegate serviceBrowser:self foundHostname:@"192.168.0.18"
+                          andPort:443
+                       forService:self.serviceName];
+    //[_serviceBrowser searchForServicesOfType:@"_http._tcp" inDomain:@""];
 }
 
 /***********************************************************/

@@ -3,5 +3,12 @@
     "webserver" : {
         "serviceName" : "rcswitch-rpi-server",
         "port" : 3000
+    },
+    "database" : {
+        "path" : "data/switches.db"
+    },
+    "switchExe" : {
+        "command" : "echo",
+        "trialCount" : 5
     }
 }

@@ -11,7 +11,7 @@ var path = require('path');
 var routes = require('./routes');
 var config = require('configure');
 var Datastore = require('nedb'), db = {};
-db.switches = new Datastore({ filename: 'data/switches.db', autoload: true});
+db.switches = new Datastore({ filename: config.database.path, autoload: true});
 
 routes.setDB(db);
 
